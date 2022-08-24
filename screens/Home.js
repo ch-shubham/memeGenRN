@@ -1,23 +1,25 @@
 import React from 'react';
 import {Button, FlatList, Text, View} from 'react-native';
+import HorizontalCard from '../components/HorizontalCard';
 import memeData from '../data/meneData.json';
 
 export default function Home(props) {
-  console.log(`Home Screen ${memeData.data.memes[1].name}`);
+  const handlePress = () => {
+    console.log('Pressed');
+    props.navigation.navigate('MemeDetails');
+  };
+
   return (
     <View>
-      <Text>Home Screen</Text>
       <FlatList
         data={memeData.data.memes}
         keyExtractor={({id}) => id.toString()}
         renderItem={({item}) => (
-          <View>
-            <Button
-              title="Click Me"
-              onPress={() => props.navigation.navigate('MemeDetails')}
-            />
-            <Text>{item.name}</Text>
-          </View>
+          <HorizontalCard
+            imageUri={item.url}
+            name={item.name}
+            handlePress={handlePress}
+          />
         )}
       />
     </View>
