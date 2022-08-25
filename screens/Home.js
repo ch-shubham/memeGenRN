@@ -1,18 +1,20 @@
 import React from 'react';
+import {useSelector} from 'react-redux';
 import {Button, FlatList, Text, View} from 'react-native';
 import HorizontalCard from '../components/HorizontalCard';
-import memeData from '../data/meneData.json';
+import memeData2 from '../data/meneData.json';
 
 export default function Home(props) {
+  const memeData = useSelector(state => state.memeDataReducer);
+
   const handlePress = () => {
-    console.log('Pressed');
     props.navigation.navigate('MemeDetails');
   };
 
   return (
     <View>
       <FlatList
-        data={memeData.data.memes}
+        data={memeData2.data.memes}
         keyExtractor={({id}) => id.toString()}
         renderItem={({item}) => (
           <HorizontalCard
