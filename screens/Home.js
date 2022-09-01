@@ -1,11 +1,18 @@
-import React from 'react';
-import {useSelector} from 'react-redux';
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import {Button, FlatList, Text, View} from 'react-native';
 import HorizontalCard from '../components/HorizontalCard';
 import memeData2 from '../data/meneData.json';
+import {getMemeData} from '../redux/memeDataActionCreator';
 
 export default function Home(props) {
-  const memeData = useSelector(state => state.memeDataReducer);
+  const memeData = useSelector(state => state.memeData);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getMemeData());
+  }, [dispatch]);
 
   const handlePress = () => {
     props.navigation.navigate('MemeDetails');
@@ -14,7 +21,7 @@ export default function Home(props) {
   return (
     <View>
       <FlatList
-        data={memeData2.data.memes}
+        data={memeData.data.memes}
         keyExtractor={({id}) => id.toString()}
         renderItem={({item}) => (
           <HorizontalCard

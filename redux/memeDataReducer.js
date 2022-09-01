@@ -8,7 +8,6 @@ const initState = {
 };
 
 const memeDataReducer = (initialState = initState, action) => {
-  console.log('INITIAL::', initialState);
   switch (action.type) {
     case FETCH_MEME_DATA_SUCCESS:
       return action.payload;
