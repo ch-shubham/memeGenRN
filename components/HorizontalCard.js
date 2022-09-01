@@ -1,5 +1,6 @@
 import React from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import FastImage from 'react-native-fast-image';
 
 const styles = StyleSheet.create({
   container: {
@@ -21,10 +22,10 @@ export default function HorizontalCard({imageUri, name, handlePress}) {
   return (
     <TouchableOpacity onPress={handlePress}>
       <View style={styles.container}>
-        <Image
+        <FastImage
           style={styles.logo}
-          source={{uri: imageUri}}
-          resizeMode="cover"
+          source={{uri: imageUri, priority: FastImage.priority.normal}}
+          resizeMode={FastImage.resizeMode.contain}
         />
         <Text style={styles.textContainer}>{name}</Text>
       </View>
