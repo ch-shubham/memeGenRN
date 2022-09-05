@@ -1,4 +1,10 @@
-import {FETCH_MEME_DATA_FAILED, FETCH_MEME_DATA_SUCCESS} from './actionType';
+import {
+  FETCH_MEME_DATA_FAILED,
+  FETCH_MEME_DATA_SUCCESS,
+  NEXT_MEME,
+  PREVIOUS_MEME,
+  SET_CURRENT_MEME,
+} from './actionType';
 
 const initState = {
   success: true,
@@ -18,4 +24,17 @@ const memeDataReducer = (initialState = initState, action) => {
   }
 };
 
+export const currentMemeReducer = (state = 0, action = {payload: []}) => {
+  // console.log('Current Meme Reducer : ', action.payload);
+  switch (action.type) {
+    case NEXT_MEME:
+      return action.payload;
+    case PREVIOUS_MEME:
+      return action.payload;
+    case SET_CURRENT_MEME:
+      return action.payload;
+    default:
+      return state;
+  }
+};
 export default memeDataReducer;

@@ -1,8 +1,9 @@
 import {configureStore} from '@reduxjs/toolkit';
-import memeDataReducer from './memeDataReducer';
+import memeDataReducer, {currentMemeReducer} from './memeDataReducer';
 
 const rootReducer = {
   memeData: memeDataReducer,
+  currentMemeReducer,
 };
 
 const store = configureStore({

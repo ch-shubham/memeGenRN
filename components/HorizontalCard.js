@@ -18,9 +18,15 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function HorizontalCard({imageUri, name, handlePress}) {
+export default function HorizontalCard({
+  imageUri,
+  name,
+  handlePress,
+  currIndex,
+}) {
+  // console.log('Current iNDEX in Horizonatal Card', currIndex);
   return (
-    <TouchableOpacity onPress={handlePress}>
+    <TouchableOpacity onPress={() => handlePress(currIndex)}>
       <View style={styles.container}>
         <FastImage
           style={styles.logo}

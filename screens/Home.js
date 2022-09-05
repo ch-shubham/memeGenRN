@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {Button, FlatList, Text, View} from 'react-native';
 import HorizontalCard from '../components/HorizontalCard';
 import memeData2 from '../data/meneData.json';
-import {getMemeData} from '../redux/memeDataActionCreator';
+import {getMemeData, setCurrentIndex} from '../redux/memeDataActionCreator';
 
 function Home(props) {
   const memeData = useSelector(state => state.memeData);
@@ -14,16 +14,19 @@ function Home(props) {
     dispatch(getMemeData());
   }, [dispatch]);
 
-  const handlePress = () => {
+  const handlePress = currIndex => {
+    // console.log('Inside handlePress', currIndex);
+    dispatch(setCurrentIndex(currIndex));
     props.navigation.navigate('MemeDetails');
   };
 
-  const renderItem = ({item}) => (
+  const renderItem = ({item, index}) => (
     <HorizontalCard
       imageUri={item.url}
       name={item.name}
       handlePress={handlePress}
       key={item.id}
+      currIndex={index}
     />
   );
 
