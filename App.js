@@ -7,15 +7,7 @@
  */
 
 import React from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import {StyleSheet} from 'react-native';
 import Home from './screens/Home';
 import {createStackNavigator} from '@react-navigation/stack';
 import MemeDetails from './screens/MemeDetails';
@@ -29,9 +21,30 @@ const App = () => {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="MemeDetails" component={MemeDetails} />
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: '#A084CA',
+            },
+            headerTintColor: '#EBC7E8',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}>
+          <Stack.Screen
+            name="Home"
+            options={{
+              title: 'Welcome to the Laughter Party !',
+            }}
+            component={Home}
+          />
+          <Stack.Screen
+            name="MemeDetails"
+            options={{
+              title: 'Description',
+            }}
+            component={MemeDetails}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

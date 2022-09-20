@@ -1,8 +1,7 @@
 import React, {memo, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {Button, FlatList, Text, View} from 'react-native';
+import {FlatList, StyleSheet, View} from 'react-native';
 import HorizontalCard from '../components/HorizontalCard';
-import memeData2 from '../data/meneData.json';
 import {getMemeData, setCurrentIndex} from '../redux/memeDataActionCreator';
 
 function Home(props) {
@@ -31,7 +30,7 @@ function Home(props) {
   );
 
   return (
-    <View>
+    <View style={styles.container}>
       <FlatList
         data={memeData.data.memes}
         keyExtractor={({id}) => id.toString()}
@@ -40,5 +39,11 @@ function Home(props) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#EBC7E8',
+  },
+});
 
 export default memo(Home);

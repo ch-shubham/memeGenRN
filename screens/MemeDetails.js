@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faHandPointRight as nextIcon} from '@fortawesome/free-solid-svg-icons/faHandPointRight';
 import {faHandPointLeft as previousIcon} from '@fortawesome/free-solid-svg-icons/faHandPointLeft';
@@ -38,17 +38,20 @@ export default function MemeDetails() {
           }}
           resizeMode={FastImage.resizeMode.cover}
         />
+        <Text style={styles.textContainer}>
+          {memeData.data.memes[currIndex].name}
+        </Text>
       </View>
       <View style={styles.actionContainer}>
         <View style={styles.navigationButton}>
           <TouchableOpacity onPress={getPreviousIndex}>
-            <FontAwesomeIcon size={48} icon={previousIcon} />
+            <FontAwesomeIcon color="#A084CA" size={48} icon={previousIcon} />
           </TouchableOpacity>
         </View>
         <View style={styles.actionContainerDivider}></View>
         <View style={styles.navigationButton}>
           <TouchableOpacity onPress={getNextIndex}>
-            <FontAwesomeIcon size={48} icon={nextIcon} />
+            <FontAwesomeIcon color="#A084CA" size={48} icon={nextIcon} />
           </TouchableOpacity>
         </View>
       </View>
@@ -59,7 +62,7 @@ export default function MemeDetails() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f7faf8',
+    backgroundColor: '#EBC7E8',
     padding: 20,
   },
   imageContainer: {
@@ -86,5 +89,18 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: '100%',
+    borderRadius: 10,
+    elevation: 20,
+  },
+  textContainer: {
+    margin: 10,
+    fontWeight: '900',
+    fontSize: 20,
+    color: '#645CAA',
+    textAlign: 'center',
+    textDecorationLine: 'underline',
+    fontWeight: 'bold',
+    fontStyle: 'italic',
+    fontSize: 20,
   },
 });

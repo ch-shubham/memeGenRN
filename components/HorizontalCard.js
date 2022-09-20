@@ -7,14 +7,22 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 20,
+    margin: 20,
+    borderColor: '#A084CA',
+    borderBottomWidth: 2,
+    borderRadius: 20,
   },
-  logo: {
-    width: '90%',
-    height: 200,
+  image: {
+    width: 300,
+    height: 300,
+    borderRadius: 20,
+    elevation: 10,
   },
   textContainer: {
     margin: 10,
+    fontWeight: '900',
+    fontSize: 20,
+    color: '#645CAA',
   },
 });
 
@@ -29,9 +37,9 @@ export default function HorizontalCard({
     <TouchableOpacity onPress={() => handlePress(currIndex)}>
       <View style={styles.container}>
         <FastImage
-          style={styles.logo}
+          style={styles.image}
           source={{uri: imageUri, priority: FastImage.priority.normal}}
-          resizeMode={FastImage.resizeMode.contain}
+          resizeMode={FastImage.resizeMode.stretch}
         />
         <Text style={styles.textContainer}>{name}</Text>
       </View>
